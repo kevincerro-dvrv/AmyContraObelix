@@ -617,10 +617,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 116617721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164c3876407f4ab4aa61c32061ad1bf5, type: 3}
+  m_Script: {fileID: 11500000, guid: eabb2d528a2a0274eb07cc4afd5c6d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedTag: Player
+  aceptedTag: Player
 --- !u!1 &225009687
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 225009692}
   - component: {fileID: 225009691}
   - component: {fileID: 225009690}
+  - component: {fileID: 225009693}
   m_Layer: 8
   m_Name: RotatingDoor2
   m_TagString: Untagged
@@ -726,6 +727,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225009687}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &225009693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225009687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a881e3724fa32c40af7279337a15580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDetector: {fileID: 962924856}
+  rotatingSpeed: -90
 --- !u!1 &230597080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1087,7 @@ Transform:
   m_GameObject: {fileID: 309450364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58547497, y: 2.33, z: -7.5489836}
+  m_LocalPosition: {x: 0.61073154, y: 2.33, z: -3.8605266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1450,12 +1465,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 424998342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe4c6b4bab366b47955d1fc44790dbf, type: 3}
+  m_Script: {fileID: 11500000, guid: eb4282da83d91624ebf98b062d7d6072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetector: {fileID: 116617725}
   amplitude: 4
-  period: 2
+  period: 2.5
 --- !u!1 &472074211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1545,7 @@ GameObject:
   - component: {fileID: 490450271}
   - component: {fileID: 490450270}
   - component: {fileID: 490450269}
+  - component: {fileID: 490450272}
   m_Layer: 8
   m_Name: VerticalDoor
   m_TagString: Untagged
@@ -1623,6 +1639,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490450267}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &490450272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490450267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b159d7bcd0cb243a28cf41df141879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDetector: {fileID: 116617725}
+  amplitude: 2
+  period: 1.8
 --- !u!1 &612472666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1682,7 @@ Transform:
   m_GameObject: {fileID: 612472666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -0.17, z: -8.26}
+  m_LocalPosition: {x: -0.54, y: -0.17, z: -1.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1919,7 +1950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715490880}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11784723, y: 0.77200186, z: -0.15005292, w: 0.6063079}
+  m_LocalRotation: {x: 0.18711375, y: -0.19197214, z: 0.037313346, w: 0.9626749}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2186,10 +2217,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 962924852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164c3876407f4ab4aa61c32061ad1bf5, type: 3}
+  m_Script: {fileID: 11500000, guid: eabb2d528a2a0274eb07cc4afd5c6d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedTag: Player
+  aceptedTag: Player
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,8 +2307,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10679929, y: 0.7746035, z: -0.13598576, w: 0.60835123}
-  m_LocalPosition: {x: 0.58547497, y: 2.33, z: -7.5489836}
+  m_LocalRotation: {x: 0.16957223, y: -0.19261914, z: 0.033815313, w: 0.9659191}
+  m_LocalPosition: {x: 0.61073154, y: 2.33, z: -3.8605266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2419,7 +2450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141670865}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10679928, y: 0.77460355, z: -0.13598578, w: 0.6083512}
+  m_LocalRotation: {x: 0.16957223, y: -0.19261912, z: 0.033815313, w: 0.9659191}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3234,6 +3265,7 @@ GameObject:
   - component: {fileID: 1712578920}
   - component: {fileID: 1712578919}
   - component: {fileID: 1712578918}
+  - component: {fileID: 1712578921}
   m_Layer: 8
   m_Name: RotatingDoor1
   m_TagString: Untagged
@@ -3327,6 +3359,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712578915}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1712578921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712578915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a881e3724fa32c40af7279337a15580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDetector: {fileID: 962924856}
+  rotatingSpeed: 90
 --- !u!1 &1729951403
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,7 +3694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925813723}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.095745325, y: 0.776943, z: -0.12191096, w: 0.61018854}
+  m_LocalRotation: {x: 0.15202115, y: -0.19320086, z: 0.030315353, w: 0.9688364}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

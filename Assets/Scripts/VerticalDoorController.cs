@@ -2,32 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalDoorController : DoorController {
+public class VerticalDoorController : DoorController {
     public float amplitude;
     public float period;
-
+    private float startYCoordinate;
     // Start is called before the first frame update
     protected override void Start() {
         base.Start();
-        elapsedTime = period / 4;
+        elapsedTime = 0;
+        startYCoordinate = transform.localPosition.y;        
     }
 
     // Update is called once per frame
     protected override void  Update() {
         base.Update();
+
+        
         if(doorMoving) {
             Vector3 newPosition = transform.localPosition;
-            newPosition.z = CalculatePosition();
+            newPosition.y = startYCoordinate + CalculatePosition();
             transform.localPosition = newPosition;
         }
         
     }
 
+
+    
     private float CalculatePosition() {
         float pinPon = Mathf.PingPong(elapsedTime * 2 / period, 1);
 
         float smoothStep = Mathf.SmoothStep(0, 1, pinPon);
 
-        return (smoothStep-0.5f)*amplitude;
+        return (smoothStep)*amplitude;
     }
 }
