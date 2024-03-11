@@ -36,18 +36,26 @@ public class Player : MonoBehaviour {
             firstFrame = false;
         }
 
-
-
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 move = cameraTransform.forward * Input.GetAxis("Vertical") + cameraTransform.right * Input.GetAxis("Horizontal");
         move.y = 0;
         move = move.normalized;
-        controller.Move(move * Time.deltaTime * playerSpeed);
+
+        Vector3 displacement = move * Time.deltaTime * playerSpeed;
+
+        controller.Move(displacement);
+
+        if (move != Vector3.zero && groundedPlayer) {
+            CheckForPushable(displacement);
+        }
 
         if(state != PlayerState.Jump && groundedPlayer) {
             if (move != Vector3.zero) {
                 gameObject.transform.forward = move;
-                SetState(PlayerState.Run);
+
+                if (state != PlayerState.Push) {
+                    SetState(PlayerState.Run);
+                }
             } else {
                 SetState(PlayerState.Idle);
             }
@@ -77,12 +85,25 @@ public class Player : MonoBehaviour {
         
     }
 
+    private void CheckForPushable(Vector3 displacement) {
+        if (Physics.Raycast(transform.position + Vector3.up, displacement, out RaycastHit hit, 0.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore)) {
+            if (hit.collider.gameObject.CompareTag("Pushable")) {
+                hit.collider.GetComponent<Pushable>().Move(displacement);
+
+                if (state != PlayerState.Push) {
+                    SetState(PlayerState.Push);
+                }
+            }
+        }
+    }
+
     private void SetState(PlayerState newState) {
         state = newState;
         animator.ResetTrigger("Idle");
         animator.ResetTrigger("Run");
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Fall");
+        animator.ResetTrigger("Push");
         animator.SetTrigger($"{newState}");
     }
 }
@@ -91,5 +112,6 @@ public enum PlayerState {
     Idle,
     Run,
     Jump, 
-    Fall
+    Fall,
+    Push
 }

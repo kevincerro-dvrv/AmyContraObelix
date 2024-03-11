@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 38446066}
   m_Layer: 9
   m_Name: MeshRenderer
-  m_TagString: Pushable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1969,9 +1969,10 @@ GameObject:
   - component: {fileID: 842462959}
   - component: {fileID: 842462958}
   - component: {fileID: 842462957}
+  - component: {fileID: 842462960}
   m_Layer: 0
   m_Name: Menhir2
-  m_TagString: Untagged
+  m_TagString: Pushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2048,6 +2049,18 @@ Transform:
   - {fileID: 1535823075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842462960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842462956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bb3c89b2c1eb848aa0e84a2d44dc4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &923526493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,7 +2320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16957223, y: -0.19261914, z: 0.033815313, w: 0.9659191}
+  m_LocalRotation: {x: 0.16957223, y: -0.19261906, z: 0.0338153, w: 0.9659191}
   m_LocalPosition: {x: 0.61073154, y: 2.33, z: -3.8605266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2450,7 +2463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141670865}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16957223, y: -0.19261912, z: 0.033815313, w: 0.9659191}
+  m_LocalRotation: {x: 0.16957223, y: -0.19261907, z: 0.033815302, w: 0.9659191}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2469,9 +2482,10 @@ GameObject:
   - component: {fileID: 1209468529}
   - component: {fileID: 1209468528}
   - component: {fileID: 1209468527}
+  - component: {fileID: 1209468530}
   m_Layer: 0
   m_Name: Menhir
-  m_TagString: Untagged
+  m_TagString: Pushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2540,6 +2554,18 @@ Transform:
   - {fileID: 1899793879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1209468530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209468526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bb3c89b2c1eb848aa0e84a2d44dc4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1219911607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3553,7 +3579,7 @@ GameObject:
   - component: {fileID: 1899793877}
   m_Layer: 9
   m_Name: Mesh
-  m_TagString: Pushable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3694,7 +3720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925813723}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15202115, y: -0.19320086, z: 0.030315353, w: 0.9688364}
+  m_LocalRotation: {x: 0.15202115, y: -0.19320084, z: 0.030315353, w: 0.9688364}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
