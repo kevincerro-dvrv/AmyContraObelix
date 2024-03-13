@@ -21,6 +21,8 @@ public class Player : MonoBehaviour {
 
     private Animator animator;
 
+    private Transform pickedObject;
+
     private void Start() {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -38,7 +40,15 @@ public class Player : MonoBehaviour {
             firstFrame = false;
         }
 
-
+        // Allow to grab objects
+        if (Input.GetButtonDown("Interaction")) {
+            if (pickedObject == null) {
+                CheckForPickable();
+            } else {
+                ReleaseObject();
+            }
+        
+        }
 
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 move = cameraTransform.forward * Input.GetAxis("Vertical") + cameraTransform.right * Input.GetAxis("Horizontal");
@@ -111,6 +121,36 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Fall");
         animator.SetTrigger($"{newState}");
+    }
+
+    private void CheckForPickable() {
+        if (Physics.Raycast(transform.position + Vector3.up * 0.75f, transform.forward, out RaycastHit hitUp,  0.5f)) {
+            if (hitUp.collider.gameObject.CompareTag("Pickable")) {
+                GrabObject(hitUp);
+                return;
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * 0.75f, transform.forward, out RaycastHit hitFront,  0.5f)) {
+            if (hitFront.collider.gameObject.CompareTag("Pickable")) {
+                GrabObject(hitFront);
+                return;
+            }
+        }
+    }
+
+    private void GrabObject(RaycastHit hit) {
+        pickedObject = hit.collider.transform;
+        pickedObject.parent = transform;
+        pickedObject.GetComponent<Rigidbody>().isKinematic = true;
+        pickedObject.localPosition = new Vector3(0f, 0.9f, 0.4f);
+        pickedObject.rotation = transform.rotation;
+    }
+
+    private void ReleaseObject() {
+        pickedObject.parent = null;
+        pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+        pickedObject = null;
     }
 }
 
