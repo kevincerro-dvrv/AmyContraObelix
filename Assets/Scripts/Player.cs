@@ -18,10 +18,10 @@ public class Player : MonoBehaviour {
 
     private Transform cameraTransform;
 
+    private Transform pickedObject;
+
 
     private Animator animator;
-
-    private Transform pickedObject;
 
     private void Start() {
         controller = GetComponent<CharacterController>();
@@ -40,15 +40,7 @@ public class Player : MonoBehaviour {
             firstFrame = false;
         }
 
-        // Allow to grab objects
-        if (Input.GetButtonDown("Interaction")) {
-            if (pickedObject == null) {
-                CheckForPickable();
-            } else {
-                ReleaseObject();
-            }
-        
-        }
+
 
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 move = cameraTransform.forward * Input.GetAxis("Vertical") + cameraTransform.right * Input.GetAxis("Horizontal");
@@ -60,6 +52,16 @@ public class Player : MonoBehaviour {
         if(move != Vector3.zero && groundedPlayer) {
             CheckForPushable(displacement);
         }
+
+        if(Input.GetButtonDown("Interaction")) {
+            if(pickedObject == null) {
+                CheckForPickable();
+            } else {
+                ReleasePickedObject();
+            }
+            
+        }
+
 
         if(state != PlayerState.Jump && groundedPlayer) {
             if (move != Vector3.zero) {
@@ -114,6 +116,32 @@ public class Player : MonoBehaviour {
         } 
     }
 
+    private void CheckForPickable() {
+        if(Physics.Raycast(transform.position + Vector3.up * 0.75f,  transform.forward, out RaycastHit hit, 0.5f, ~0, QueryTriggerInteraction.Ignore)) {
+            if(hit.collider.gameObject.CompareTag("Pickable")) {
+                PickObject(hit);
+            }
+        } else if (Physics.Raycast(transform.position + Vector3.up * 0.35f,  transform.forward, out hit, 0.5f, ~0, QueryTriggerInteraction.Ignore)) {
+            if(hit.collider.gameObject.CompareTag("Pickable")) {
+                PickObject(hit);
+            }
+        }
+    }
+
+    private void ReleasePickedObject() {
+        pickedObject.parent = null;
+        pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+        pickedObject = null;
+    }
+
+    private void PickObject(RaycastHit hit) {
+        pickedObject = hit.collider.transform;
+        pickedObject.parent = transform;
+        pickedObject.GetComponent<Rigidbody>().isKinematic = true;
+        pickedObject.localPosition = new Vector3(0f, 0.9f, 0.4f);
+        pickedObject.rotation = transform.rotation;
+    }
+
     private void SetState(PlayerState newState) {
         state = newState;
         animator.ResetTrigger("Idle");
@@ -122,37 +150,9 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Fall");
         animator.SetTrigger($"{newState}");
     }
-
-    private void CheckForPickable() {
-        if (Physics.Raycast(transform.position + Vector3.up * 0.75f, transform.forward, out RaycastHit hitUp,  0.5f)) {
-            if (hitUp.collider.gameObject.CompareTag("Pickable")) {
-                GrabObject(hitUp);
-                return;
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * 0.75f, transform.forward, out RaycastHit hitFront,  0.5f)) {
-            if (hitFront.collider.gameObject.CompareTag("Pickable")) {
-                GrabObject(hitFront);
-                return;
-            }
-        }
-    }
-
-    private void GrabObject(RaycastHit hit) {
-        pickedObject = hit.collider.transform;
-        pickedObject.parent = transform;
-        pickedObject.GetComponent<Rigidbody>().isKinematic = true;
-        pickedObject.localPosition = new Vector3(0f, 0.9f, 0.4f);
-        pickedObject.rotation = transform.rotation;
-    }
-
-    private void ReleaseObject() {
-        pickedObject.parent = null;
-        pickedObject.GetComponent<Rigidbody>().isKinematic = false;
-        pickedObject = null;
-    }
 }
+
+
 
 
 
