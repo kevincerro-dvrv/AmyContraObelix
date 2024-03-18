@@ -15,6 +15,10 @@ public class HorizontalDoorController : DoorController {
     // Update is called once per frame
     protected override void  Update() {
         base.Update();
+        if(GameManager.instance.LevelLocked) {
+            return;
+        }
+
         if(doorMoving) {
             Vector3 newPosition = transform.localPosition;
             newPosition.z = CalculatePosition();

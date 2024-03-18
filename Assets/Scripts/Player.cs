@@ -20,8 +20,10 @@ public class Player : MonoBehaviour {
 
     private Transform pickedObject;
 
-
     private Animator animator;
+
+    private bool autoPilotMode;
+    private Vector3 autoPilotTarget;
 
     private void Start() {
         controller = GetComponent<CharacterController>();
@@ -30,9 +32,14 @@ public class Player : MonoBehaviour {
         firstFrame = true;
 
         cameraTransform = Camera.main.transform;
+        autoPilotMode = false;
     }
 
     void Update() {
+        if(autoPilotMode) {
+            AutoPilot();
+            return;
+        }
         
         groundedPlayer = controller.isGrounded;
         if(firstFrame) {
@@ -99,6 +106,17 @@ public class Player : MonoBehaviour {
         
     }
 
+    private void AutoPilot() {
+        Vector3 move = (autoPilotTarget - transform.position);
+        if(move.magnitude > 0.05f) {
+            move = move.normalized;        
+            Vector3 displacement = move * Time.deltaTime * playerSpeed;
+            controller.Move(displacement);
+        } else {
+            SetState(PlayerState.Idle);
+        }
+    }
+
     private void CheckForPushable(Vector3 displacement) {
         if(Physics.Raycast(transform.position + Vector3.up, displacement, out RaycastHit hit, 0.5f, ~0, QueryTriggerInteraction.Ignore)) {
             if(hit.collider.gameObject.CompareTag("Pushable")) {
@@ -140,6 +158,16 @@ public class Player : MonoBehaviour {
         pickedObject.GetComponent<Rigidbody>().isKinematic = true;
         pickedObject.localPosition = new Vector3(0f, 0.9f, 0.4f);
         pickedObject.rotation = transform.rotation;
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("NextLevelDoor")) {
+            autoPilotMode = true;
+            autoPilotTarget = other.transform.position;
+            autoPilotTarget.y = transform.position.y;
+            SetState(PlayerState.Run);
+            GameManager.instance.NextLevel();
+        }
     }
 
     private void SetState(PlayerState newState) {

@@ -17,7 +17,10 @@ public class VerticalDoorController : DoorController {
     protected override void  Update() {
         base.Update();
 
-        
+        if(GameManager.instance.LevelLocked) {
+            return;
+        }
+       
         if(doorMoving) {
             Vector3 newPosition = transform.localPosition;
             newPosition.y = startYCoordinate + CalculatePosition();

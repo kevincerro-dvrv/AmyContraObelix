@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruit : MonoBehaviour
-{
-    private GameManager gameManager;
-
+public class Fruit : MonoBehaviour {
+    public int points;
     // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameManager.instance;
+    void Start() {
+        Destroy(gameObject, 30f);
+        
     }
 
     // Update is called once per frame
@@ -18,13 +16,10 @@ public class Fruit : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-
-    }
-
-    public void Capture()
-    {
-        gameManager.CaptureFruit(this);
+    void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Player")) {
+            GameManager.instance.HarvestFruit(points);
+            Destroy(gameObject);
+        }
     }
 }

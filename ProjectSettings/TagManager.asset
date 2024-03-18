@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Ground
   - Pushable
+  - NextLevelDoor
   layers:
   - Default
   - TransparentFX

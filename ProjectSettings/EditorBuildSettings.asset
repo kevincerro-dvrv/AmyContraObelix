@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/AmyContraObelix.unity
+    guid: 9ce95f7cde0204e439d77464747a1109
+  - enabled: 1
+    path: Assets/Scenes/AmyYLasPlataformas.unity
+    guid: f40546cf7de0df746b5c3df884fee078
   m_configObjects: {}
