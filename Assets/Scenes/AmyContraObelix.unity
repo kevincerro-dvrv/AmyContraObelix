@@ -554,6 +554,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 842462959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &89484044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89484046}
+  - component: {fileID: 89484045}
+  m_Layer: 0
+  m_Name: GameData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &89484045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89484044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f76628aaa07364b92a5bda730665b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScore: 0
+--- !u!4 &89484046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89484044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.86575556, y: 0.5924678, z: -0.72274303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116617721
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,9 +964,10 @@ GameObject:
   - component: {fileID: 225009688}
   - component: {fileID: 225009692}
   - component: {fileID: 225009691}
+  - component: {fileID: 225009694}
   - component: {fileID: 225009690}
   - component: {fileID: 225009693}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: RotatingDoor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,6 +1074,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDetector: {fileID: 962924856}
   rotatingSpeed: -90
+--- !u!114 &225009694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225009687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8480c9f0635f547830b6bca76864a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparentMaterial: {fileID: 2100000, guid: 05ef02ba5e2a4d540acfbc507676a8ac, type: 2}
 --- !u!1 &230597080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309450366}
   - component: {fileID: 309450365}
+  - component: {fileID: 309450367}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -1383,6 +1443,36 @@ Transform:
   - {fileID: 1925813725}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309450367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309450364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 256
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &327709964
 GameObject:
   m_ObjectHideFlags: 3
@@ -1648,9 +1738,10 @@ GameObject:
   - component: {fileID: 424998343}
   - component: {fileID: 424998347}
   - component: {fileID: 424998346}
+  - component: {fileID: 424998349}
   - component: {fileID: 424998345}
   - component: {fileID: 424998348}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: HorizontalDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,6 +1849,19 @@ MonoBehaviour:
   playerDetector: {fileID: 116617725}
   amplitude: 4
   period: 2.5
+--- !u!114 &424998349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424998342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8480c9f0635f547830b6bca76864a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparentMaterial: {fileID: 2100000, guid: 05ef02ba5e2a4d540acfbc507676a8ac, type: 2}
 --- !u!1 &472074211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,9 +1935,10 @@ GameObject:
   - component: {fileID: 490450268}
   - component: {fileID: 490450271}
   - component: {fileID: 490450270}
+  - component: {fileID: 490450273}
   - component: {fileID: 490450269}
   - component: {fileID: 490450272}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: VerticalDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1941,6 +2046,19 @@ MonoBehaviour:
   playerDetector: {fileID: 116617725}
   amplitude: 2
   period: 1.8
+--- !u!114 &490450273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490450267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8480c9f0635f547830b6bca76864a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparentMaterial: {fileID: 2100000, guid: 05ef02ba5e2a4d540acfbc507676a8ac, type: 2}
 --- !u!1 &612472666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +2069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612472669}
   - component: {fileID: 612472670}
+  - component: {fileID: 612472673}
   - component: {fileID: 612472671}
   - component: {fileID: 612472672}
   m_Layer: 7
@@ -2036,6 +2155,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &612472673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612472666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae03ed5ff2abb594280c67dcc5bad9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 963194228}
+  playerTarget: {fileID: 472074212}
+  detectedLayers:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &702830147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715490880}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18711378, y: -0.19197215, z: 0.037313364, w: 0.96267486}
+  m_LocalRotation: {x: 0.18711376, y: -0.19197212, z: 0.03731335, w: 0.96267486}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3771,9 +3907,10 @@ GameObject:
   - component: {fileID: 1712578916}
   - component: {fileID: 1712578920}
   - component: {fileID: 1712578919}
+  - component: {fileID: 1712578922}
   - component: {fileID: 1712578918}
   - component: {fileID: 1712578921}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: RotatingDoor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3880,6 +4017,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDetector: {fileID: 962924856}
   rotatingSpeed: 90
+--- !u!114 &1712578922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712578915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8480c9f0635f547830b6bca76864a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparentMaterial: {fileID: 2100000, guid: 05ef02ba5e2a4d540acfbc507676a8ac, type: 2}
 --- !u!1 &1729951403
 GameObject:
   m_ObjectHideFlags: 0
@@ -4531,6 +4681,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 963194228}
+  - {fileID: 89484046}
   - {fileID: 157884854}
   - {fileID: 1814671555}
   - {fileID: 612472669}

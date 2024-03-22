@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour {
     public Light sunlight;
     private AudioSource audioSource;
 
-    private int score;
     private int nextLevelScore = 400;
 
     private bool levelLocked;
@@ -29,8 +28,8 @@ public class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         StartCoroutine(SpawnFruit());
-        score = 0;
-        audioSource = GetComponent<AudioSource>();        
+        //GameData.instance.playerScore = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,11 +52,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void HarvestFruit(int points) {
-        score += points;
+        GameData.instance.playerScore += points;
         audioSource.PlayOneShot(fruitSound);
-        Debug.Log($"[GameManater] HarvestFruit {score}");
+        Debug.Log($"[GameManater] HarvestFruit {GameData.instance.playerScore}");
 
-        if(score >= nextLevelScore) {
+        if(GameData.instance.playerScore >= nextLevelScore) {
             nextLevelDoor.SetActive(true);
         }
     }
@@ -79,5 +78,6 @@ public class GameManager : MonoBehaviour {
 
     private void LoadNextLevel() {
         SceneManager.LoadScene("AmyYLasPlataformas");
+        //SceneManager.LoadScene("AmyContraObelix");
     }
 }
