@@ -167,6 +167,14 @@ public class Player : MonoBehaviour {
             autoPilotTarget.y = transform.position.y;
             SetState(PlayerState.Run);
             GameManager.instance.NextLevel();
+        } else if (other.gameObject.CompareTag("Platform")) {
+            transform.parent = other.transform;
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Platform")) {
+            transform.parent = null;
         }
     }
 
