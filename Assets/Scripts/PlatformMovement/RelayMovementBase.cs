@@ -5,17 +5,20 @@ using UnityEngine;
 public abstract class RelayMovementBase : MonoBehaviour
 {
     public float period;
+    public bool hasToken;
+
+    protected float cyclingTime;
     
-    public abstract void RelayToken(Vector3 velocity);
+    public abstract void RelayToken(RelayMovementBase yieldingComponent, Vector3 velocity);
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        cyclingTime = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
     }
@@ -32,5 +35,23 @@ public abstract class RelayMovementBase : MonoBehaviour
 
     protected float SmoothStep(float t) {
         return Mathf.SmoothStep(0f, 1f, PingPong(t));
+    }
+
+    protected void AddTime()
+    {
+        cyclingTime += Time.deltaTime;
+        
+        if(cyclingTime >= period) {
+            cyclingTime -= period;
+        }
+    }
+
+    protected bool CheckPhasePoint(float phaseToCheck)
+    {
+        if (cyclingTime > (phaseToCheck * period)) {
+            return cyclingTime - phaseToCheck * period < Time.deltaTime * 1.2f;
+        }
+
+        return false;
     }
 }
