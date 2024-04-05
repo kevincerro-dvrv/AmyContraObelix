@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2114907555134033288}
   - component: {fileID: 6083212596669479988}
+  - component: {fileID: 9110202814674979288}
   m_Layer: 0
   m_Name: MobilePlatform
   m_TagString: Platform
@@ -153,3 +154,24 @@ MonoBehaviour:
   startPoint: {fileID: 0}
   endPoint: {fileID: 0}
   period: 4.5
+--- !u!65 &9110202814674979288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036321531547236318}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9, y: 0.4, z: 1.9}
+  m_Center: {x: 0, y: 0.2, z: 0}
