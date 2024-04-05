@@ -27,7 +27,6 @@ public class RelayCircularMovement : RelayMovementBase {
         AddTime();
         transform.RotateAround(rotationCenter.position, rotationAxis, Time.deltaTime * 360 / period);
         
-        
         if(isStartMovement) {
             if(Vector3.Angle(transform.position-rotationCenter.position, rotationEnd.position-rotationCenter.position) < 1f) {
                 endRelay.RelayToken(this, Vector3.zero);
@@ -45,6 +44,7 @@ public class RelayCircularMovement : RelayMovementBase {
     public override void RelayToken(RelayMovementBase yieldingRelay, Vector3 velocity) {
         hasToken = true;
         cyclingTime = 0;
+        period = 2 * Mathf.PI * (rotationEnd.position-rotationCenter.position).magnitude / velocity.magnitude;
         if(yieldingRelay.Equals(startRelay)) {
             rotationAxis = Vector3.Cross(rotationStart.position - rotationCenter.position, rotationEnd.position - rotationCenter.position);
             isStartMovement = true;
